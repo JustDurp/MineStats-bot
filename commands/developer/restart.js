@@ -21,7 +21,7 @@ module.exports.run = async (bot, message, args, owner) => {
             message.channel.send(restartEmbed).then(async (msg) => {
 
                 bot.destroy();
-                bot.login("NzQyODQ0OTA0NjY0ODU4NzM2.XzMCOg.dB6Cjzm9NRN9QttPWRS-UHOVXs0")
+                bot.login("")
 
 
             })
