@@ -12,7 +12,7 @@ const chalk = require("chalk")
 
 const bot = new Discord.Client({ partials: ['MESSAGE', 'CHANNEL', 'REACTION'] });
 bot.commands = new Discord.Collection();
-bot.login("NjcxMDc0MTIwNzY2NTg2OTAx.Xi3oeg.3lBZQwFjUutVFWaozGYMk6WlAIU")
+bot.login("")
 
 readdirSync(`./events/`).forEach(file => {
     if (!file.endsWith('.js')) return;
