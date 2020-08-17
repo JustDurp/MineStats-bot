@@ -43,7 +43,8 @@ class Skin extends Command {
 
                 message.channel.send(skinEmbed);
 
-            }).catch((): void => {
+            }).catch((e: string): void => {
+                console.log(e);
                 new ErrorBuilder(message, 'unknownuser').send();
             });
 
@@ -63,7 +64,8 @@ class Skin extends Command {
 
                 message.channel.send(skinEmbed);
 
-            }).catch((): void => {
+            }).catch((e: string): void => {
+                console.log(e);
                 new ErrorBuilder(message, 'unknownuser').send();
             });
 

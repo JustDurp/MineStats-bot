@@ -50,7 +50,8 @@ class Userinfo extends Command {
     
                 message.channel.send(userEmbed);
 
-            }).catch((): void => {
+            }).catch((e: string): void => {
+                console.log(e);
                 new ErrorBuilder(message, 'unknownuser').send();
             });
 
@@ -74,7 +75,7 @@ class Userinfo extends Command {
             
                 message.channel.send(userEmbed);
 
-            }).catch((): void => {
+            }).catch((e: string): void => {
                 new ErrorBuilder(message, 'unknownuser').send();
             });
 
