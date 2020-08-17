@@ -1,0 +1,27 @@
+[
+    {
+        "type": "noperms",
+        "title": "Ooohhhhhh",
+        "message": "It seems like you dont have permissions to execute this command lmao..."
+    },
+    {
+        "type": "unknownuser",
+        "title": "Hmmmkay wtf?",
+        "message": "You are trying to look for an unknown user..."
+    },
+    {
+        "type": "nouser",
+        "title": "Alllrighttt",
+        "message": "You want retrieve some information about who?!"
+    },
+    {
+        "type": "noserver",
+        "title": "Okayy",
+        "message": "How am I supposed to look for a server without an IP?"
+    },
+    {
+        "type": "offlineserver",
+        "title": "Oooofff",
+        "message": "I'm sorry to say, but this server is offline at the moment..."
+    }
+]

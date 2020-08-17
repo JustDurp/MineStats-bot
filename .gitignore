@@ -1,0 +1,6 @@
+node_modules
+package-lock.json
+dist
+minestats.db
+.env
+node_modules
