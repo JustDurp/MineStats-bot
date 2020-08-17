@@ -33,4 +33,13 @@ export class SettingsHandler {
         });
     }
 
+    async updatePrefix(prefix: string): Promise<void> {
+        return new Promise((resolve: any, reject: any): void => {
+            db.run(`UPDATE settings SET value = '${prefix}' WHERE guildID = '${this.guildID}' AND setting = 'prefix'`, (err: string, row: SQLsettings) => {
+                if (err) reject(err);
+                resolve(row);
+            });
+        });
+    }
+
 }
