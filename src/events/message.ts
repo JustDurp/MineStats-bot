@@ -37,6 +37,7 @@ module.exports = class {
 
         if (command) {
             if (!message.member.hasPermission(command.pull.permissions) && config.developers.includes(message.author.id)) return new ErrorBuilder(message, 'noperms').send();
+            if (command.pull.category === 'developer' && !config.developers.includes(message.author.id)) return new ErrorBuilder(message, 'noperms').send();
             command.run(message, args); 
         }
 

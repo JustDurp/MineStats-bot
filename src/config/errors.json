@@ -33,5 +33,10 @@
         "type": "failedprefix",
         "title": "Something went wrong",
         "message": "While updating your guild prefix, an error has been occurred..."
+    },
+    {
+        "type": "nocode",
+        "title": "Dumbass",
+        "message": "How am I supposed to evaluate some juicy code WITHOUT INPUT?!"
     }
 ]

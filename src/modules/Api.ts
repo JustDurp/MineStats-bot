@@ -100,3 +100,11 @@ export async function ServerStats(serverIP: string) {
             .catch((): void => reject(`Server has not been found!`));
     });
 }
+
+// CleanText
+export function CleanText(text: string) {
+    if (typeof (text) === "string")
+        return text.replace(/`/g, "`" + String.fromCharCode(8203)).replace(/@/g, "@" + String.fromCharCode(8203));
+    else
+        return text;
+}
