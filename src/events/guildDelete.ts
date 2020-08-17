@@ -1,11 +1,10 @@
 /**
- * @file guildCreate.ts
+ * @file guildDelete.ts
  */
 
 // Library
 import { Guild } from 'discord.js';
-import { db } from '../app';
-import { ExtendBot, SQLsettings } from '../modules/Api';
+import { ExtendBot } from '../modules/Api';
 import { SettingsHandler } from '../modules/SettingsHandler';
 
 // Module Exports
@@ -17,8 +16,8 @@ module.exports = class {
     }
 
     async run(guild: Guild): Promise<void> {
-        
-        new SettingsHandler(guild.id).addPrefix();
+
+        new SettingsHandler(guild.id).removePrefix();
 
     }
 

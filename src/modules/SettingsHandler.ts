@@ -17,7 +17,16 @@ export class SettingsHandler {
 
     async addPrefix(): Promise<void> {
         return new Promise((resolve: any, reject: any): void => {
-            db.run(`INSERT INTO settings(guildID, setting, prefix, updatedAt) VALUES('${this.guildID}', 'prefix', '!', '${Date.now()}')`, (err: string, row: SQLsettings) => {
+            db.run(`INSERT INTO settings(guildID, setting, value, updatedAt) VALUES('${this.guildID}', 'prefix', '!', '${Date.now()}')`, (err: string, row: SQLsettings) => {
+                if (err) reject(err);
+                resolve(row);
+            });
+        });
+    }
+
+    async removePrefix(): Promise<void> {
+        return new Promise((resolve: any, reject: any): void => {
+            db.run(`DELETE FROM settings WHERE guildID = '${this.guildID}'`, (err: string, row: SQLsettings) => {
                 if (err) reject(err);
                 resolve(row);
             });

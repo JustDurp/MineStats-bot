@@ -17,6 +17,10 @@ module.exports = class {
 
         console.log(`- Client | ${this.client.user.tag} is online!`);
 
+        this.client.user.setActivity(`${this.client.guilds.cache.size} guilds!`, {
+            type: 'WATCHING'
+        });
+
     }
 
 }
