@@ -11,7 +11,7 @@
 // Packages
 import { Minestats } from './domain/minestats';
 import { config } from 'dotenv';
-import { Database } from 'sqlite3';
+import { DatabaseConnection } from './modules/DatabaseConnection';
 
 
 /**
@@ -22,16 +22,13 @@ import { Database } from 'sqlite3';
 // Dotenv
 config({ path: '.env' }).parsed;
 
-console.log(process.env.token)
-
-// SQLite database
-export let db = new Database('./minestats.db', (err: unknown): void => {
-    if (err) {
-        console.log(`- SQLite | ${err}`);
-    } else {
-        console.log(`- SQLite | Database has been connected!`);
-    }
-});
+// MySQL Database
+export let con = new DatabaseConnection({ 
+    host: process.env.dbhost,
+    database: process.env.dbdatabase,
+    user: process.env.dbuser,
+    password: process.env.dbpassword
+}).connect();
 
 // Discord client
 new Minestats().connect();

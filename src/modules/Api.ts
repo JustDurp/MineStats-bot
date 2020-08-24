@@ -28,6 +28,14 @@ export interface CommandPull {
     permissions?: string;
 }
 
+// MyLogin 
+export interface MyLogin {
+    host: string;
+    user: string;
+    password: string;
+    database;
+}
+
 // UTU
 export interface UTU {
     name: string;
