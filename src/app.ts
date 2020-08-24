@@ -22,6 +22,8 @@ import { Database } from 'sqlite3';
 // Dotenv
 config({ path: '.env' }).parsed;
 
+console.log(process.env.token)
+
 // SQLite database
 export let db = new Database('./minestats.db', (err: unknown): void => {
     if (err) {
