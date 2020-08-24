@@ -23,7 +23,7 @@ class Bot extends Command {
 
     async run(message: Message, args: Array<string>): Promise<void> {
 
-        let developers: Array<string>;
+        let developers: Array<string> = [];
         for (let a: number = 0; a < config.developers.length; a++) {
             developers.push(this.client.users.cache.get(config.developers[a]).tag);
         }
