@@ -6,8 +6,10 @@
 import { Message, MessageEmbed } from 'discord.js';
 import { ExtendBot } from '../../modules/Api';
 import { Command } from '../../modules/Command';
+import moment from 'moment';
+const config = require('../../config/config.json');
 
-// bot
+// Bot
 class Bot extends Command {
 
     constructor(client: ExtendBot) {
@@ -21,18 +23,25 @@ class Bot extends Command {
 
     async run(message: Message, args: Array<string>): Promise<void> {
 
-        message.channel.send(new MessageEmbed()
-            .setTitle("Bot Information")
+        let developers: Array<string>;
+        for (let a: number = 0; a < config.developers.length; a++) {
+            developers.push(this.client.users.cache.get(config.developers[a]).tag);
+        }
+
+        let botEmbed = new MessageEmbed()
+            .setColor(this.client.colors.primary)
             .setThumbnail(this.client.user.displayAvatarURL())
-            .setColor("BLUE")
-            .addFields(
-                { name: `Github:`, value: `Click [here](https://github.com/JustDurp/MineStats-bot) to visit the Github repository`, inline: true },
-                { name: `Authors:`, value: `HalloSouf#9342,\n vertx#0001,\n 𝕄𝕪𝕣𝔻𝕣𝕒𝕘𝕠𝕟#9912`, inline: true },
-                { name: `Language:`, value: `TypeScript`, inline: true },
-                { name: `Created at`, value: this.client.user.createdAt, inline: true }
+            .addFields([
+                { name: `**Github repository**`, value: `Click [here](https://github.com/JustDurp/MineStats-bot)`, inline: true },
+                { name: `**Library**`, value: `discord.js`, inline: true },
+                { name: `**NodeJS**`, value: process.version, inline: true },
+                { name: `**Created at**`, value: moment(Date.now()).format('YYYY-MM-DD HH:mm:ss'), inline: true },
+                { name: `**Authors**`, value: developers.join(', '), inline: true },
+            ])
+            .setTimestamp()
+            .setFooter(this.client.user.tag)
 
-
-            ))
+        message.channel.send(botEmbed);
 
     }
 

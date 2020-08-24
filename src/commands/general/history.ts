@@ -5,7 +5,6 @@
 // Library
 import { Message, MessageEmbed } from 'discord.js';
 import ms from 'ms';
-import { send } from 'process';
 import { ExtendBot, HeadAvatar, UserHistory, UsernameToUUID, UTU, UUIDToUsername } from '../../modules/Api';
 import { Command } from '../../modules/Command';
 import { ErrorBuilder } from '../../modules/ErrorBuilder';

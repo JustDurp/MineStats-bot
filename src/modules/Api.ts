@@ -33,7 +33,7 @@ export interface MyLogin {
     host: string;
     user: string;
     password: string;
-    database;
+    database: string;
 }
 
 // UTU

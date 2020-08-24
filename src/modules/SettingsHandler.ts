@@ -2,7 +2,7 @@
  * @file SettingsHandler.ts
  */
 
-import { db } from "../app";
+import { con } from "../app";
 import { SQLsettings } from "./Api";
 
 // Library
@@ -17,7 +17,7 @@ export class SettingsHandler {
 
     async addPrefix(): Promise<void> {
         return new Promise((resolve: any, reject: any): void => {
-            db.run(`INSERT INTO settings(guildID, setting, value, updatedAt) VALUES('${this.guildID}', 'prefix', '!', '${Date.now()}')`, (err: string, row: SQLsettings) => {
+            con.query(`INSERT INTO settings(guildID, setting, value, updatedAt) VALUES('${this.guildID}', 'prefix', '!', '${Date.now()}')`, (err: string, row: SQLsettings) => {
                 if (err) reject(err);
                 resolve(row);
             });
@@ -26,16 +26,16 @@ export class SettingsHandler {
 
     async removePrefix(): Promise<void> {
         return new Promise((resolve: any, reject: any): void => {
-            db.run(`DELETE FROM settings WHERE guildID = '${this.guildID}'`, (err: string, row: SQLsettings) => {
+            con.query(`DELETE FROM settings WHERE guildID = '${this.guildID}' AND setting = 'prefix'`, (err: string, row: SQLsettings) => {
                 if (err) reject(err);
                 resolve(row);
             });
         });
     }
 
-    async getPrefix(): Promise<SQLsettings> {
+    async getPrefix(): Promise<SQLsettings[]> {
         return new Promise((resolve: any, reject: any): void => {
-            db.get(`SELECT * FROM settings WHERE guildID = '${this.guildID}' AND setting = 'prefix'`, (err: string, row: SQLsettings) => {
+            con.query(`SELECT * FROM settings WHERE guildID = '${this.guildID}' AND setting = 'prefix'`, (err: string, row: SQLsettings) => {
                 if (err) reject(err);
                 resolve(row);
             });
@@ -44,7 +44,7 @@ export class SettingsHandler {
 
     async updatePrefix(prefix: string): Promise<void> {
         return new Promise((resolve: any, reject: any): void => {
-            db.run(`UPDATE settings SET value = '${prefix}' WHERE guildID = '${this.guildID}' AND setting = 'prefix'`, (err: string, row: SQLsettings) => {
+            con.query(`UPDATE settings SET value = '${prefix}' AND updatedAt = '${Date.now()}' WHERE guildID = '${this.guildID}' AND setting = 'prefix'`, (err: string, row: SQLsettings) => {
                 if (err) reject(err);
                 resolve(row);
             });

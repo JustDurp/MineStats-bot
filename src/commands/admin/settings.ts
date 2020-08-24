@@ -4,7 +4,6 @@
 
 // Library
 import { Message, MessageEmbed } from 'discord.js';
-import { getNodeMajorVersion } from 'typescript';
 import { ExtendBot, SQLsettings } from '../../modules/Api';
 import { Command } from '../../modules/Command';
 import { ErrorBuilder } from '../../modules/ErrorBuilder';
@@ -63,7 +62,7 @@ class Settings extends Command {
 
             default:
 
-                let prefix: SQLsettings = await new SettingsHandler(message.guild.id).getPrefix();
+                let prefix: Array<SQLsettings> = await new SettingsHandler(message.guild.id).getPrefix();
 
                 let settingsEmbed = new MessageEmbed()
                     .setColor(this.client.colors.primary)
@@ -71,7 +70,7 @@ class Settings extends Command {
                     .setTitle(`**Minestats settings**`)
                     .addFields([
                         { name: `\u200b`, value: `**Prefix:**`, inline: true },
-                        { name: `\u200b`, value: `${prefix.value}`, inline: true },
+                        { name: `\u200b`, value: `${prefix[0].value}`, inline: true },
                         { name: `\u200b`, value: '`prefix`', inline: true }
                     ])
                     .setTimestamp()

@@ -4,8 +4,7 @@
 
 // Library
 import { Guild } from 'discord.js';
-import { db } from '../app';
-import { ExtendBot, SQLsettings } from '../modules/Api';
+import { ExtendBot } from '../modules/Api';
 import { SettingsHandler } from '../modules/SettingsHandler';
 
 // Module Exports

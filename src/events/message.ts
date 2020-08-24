@@ -21,10 +21,10 @@ module.exports = class {
 
         if (!message.guild || message.author.bot) return;
 
-        let dbPrefix: SQLsettings = await new SettingsHandler(message.guild.id).getPrefix();
-        if (!dbPrefix) return new SettingsHandler(message.guild.id).addPrefix();
+        let dbPrefix: Array<SQLsettings> = await new SettingsHandler(message.guild.id).getPrefix();
+        if (dbPrefix.length < 1) new SettingsHandler(message.guild.id).addPrefix();
 
-        let prefix: string = dbPrefix.value;
+        let prefix: string = `${dbPrefix[0] ? dbPrefix[0].value : '!'}`;
         let args: Array<string> = message.content.slice(prefix.length).trim().split(/ +/g);
         let cmd: string = args.shift().toLowerCase();
         let command;
