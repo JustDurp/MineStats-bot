@@ -30,9 +30,11 @@ class Eval extends Command {
         try {
             
             let t1: number = now();
-            let evaluated = eval(code);
+            let evaluated: string = eval(code);
             if (code.includes('process.env')) evaluated = 'Lmao wtf? Do you think am so stupid...'
             let t2: number= now();
+
+            if (evaluated.length > 1000) evaluated = evaluated.substr(evaluated.length - 1000, evaluated.length) + '...';
 
             let evalEmbed = new MessageEmbed()
                 .setColor(this.client.colors.success)
