@@ -42,16 +42,19 @@ class Settings extends Command {
 
                 try {
 
-                    new SettingsHandler(message.guild.id).updatePrefix(newPrefix);
+                    new SettingsHandler(message.guild.id).updatePrefix(newPrefix).then(() => {
 
-                    let updatedPrefix = new MessageEmbed()
-                        .setColor(this.client.colors.success)
-                        .setDescription(`Prefix has been updated to **${newPrefix}**`)
-                        .setTimestamp()
-                        .setFooter(this.client.user.username)
+                        let updatedPrefix = new MessageEmbed()
+                            .setColor(this.client.colors.success)
+                            .setDescription(`Prefix has been updated to **${newPrefix}**`)
+                            .setTimestamp()
+                            .setFooter(this.client.user.username)
 
-                    msg.edit(updatedPrefix);
+                        msg.edit(updatedPrefix);
 
+                    }).catch((err) => {
+                        console.log(err);
+                    });
 
                 } catch (e) {   
                     new ErrorBuilder(message, 'failedprefix').send();

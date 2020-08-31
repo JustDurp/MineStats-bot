@@ -44,7 +44,7 @@ export class SettingsHandler {
 
     async updatePrefix(prefix: string): Promise<void> {
         return new Promise((resolve: any, reject: any): void => {
-            con.query(`UPDATE settings SET value = '${prefix}' AND updatedAt = '${Date.now()}' WHERE guildID = '${this.guildID}' AND setting = 'prefix'`, (err: string, row: SQLsettings) => {
+            con.query(`UPDATE settings SET value = '${prefix}', updatedAt = '${Date.now()}' WHERE guildID = '${this.guildID}' AND setting = 'prefix'`, (err: string, row: SQLsettings) => {
                 if (err) reject(err);
                 resolve(row);
             });
